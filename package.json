@@ -7,7 +7,7 @@
     "frontend"
   ],
   "scripts": {
-    "project": "concurrently \"cd Backend && python -m flask --app ./server.py run \" \"cd frontend && npm start\""
+    "project": "concurrently \"cd Backend && .venv/Scripts/activate && python -m flask --app ./server.py run \" \"cd frontend && npm start\""
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
