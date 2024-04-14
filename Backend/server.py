@@ -19,15 +19,17 @@ def hello_world():
 
 
 
-@app.route("/business",methods=['GET', 'POST'])
+@app.route("/business",methods=['POST'])
 def find_business_info():
     
-    stock_name =  request.args.get('name')
+    data = request.get_json()
     
-    # local = get_local_business_data(business_name)
-    yahoo_finance = get_yahoo_data(stock_name)
-  
-    return yahoo_finance
+    company_name = data['name']
+    
+    company_data = get_yahoo_data(company_name)
+    
+    
+    return company_data
 
     
     

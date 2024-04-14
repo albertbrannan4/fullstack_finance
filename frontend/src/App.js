@@ -1,7 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import { useState, useEffect } from "react";
+import "./App.css";
 
 function App() {
+  useEffect(() => {
+    const url = "http://127.0.0.1:5000";
+
+    // const response = fetch(url, {
+    //   method: "POST",
+    //   mode: "cors",
+    //   cache: "no-cache",
+    //   credentials: "same-origin",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   redirect: "follow",
+    //   referrerPolicy: "no-referrer",
+    //   body: JSON.stringify(data),
+    // });
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
