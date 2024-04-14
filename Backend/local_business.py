@@ -1,4 +1,5 @@
 import requests
+import yfinance as yf
 
 
 def get_local_business_data(business_name):
@@ -14,7 +15,28 @@ def get_local_business_data(business_name):
     }
 
     location_data = requests.get(url, headers=headers, params=querystring)
-    result = {f'{business_name} Data':location_data.json()['data'][0],
-            f'{business_name} Stock Data':'Get from yahoo finance api'}
+    result = location_data.json()['data'][0]
+         
     
     return result
+
+
+
+
+def get_yahoo_data(stock_name):
+    
+   business_data = yf.Ticker(stock_name)
+   
+
+   info = business_data.info
+   
+#    income_statement = business_data.income_stmt
+   
+#    balance_sheet = business_data.balance_sheet
+   
+#    result = {"general_info": info}
+   
+   return business_data.income_stmt
+
+   
+   

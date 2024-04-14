@@ -3,7 +3,7 @@ from polygon import RESTClient
 from requests_oauthlib import OAuth1Session
 
 
-from local_business import get_local_business_data
+from local_business import get_local_business_data ,get_yahoo_data
 
 
 app = Flask(__name__)
@@ -22,11 +22,12 @@ def hello_world():
 @app.route("/business",methods=['GET', 'POST'])
 def find_business_info():
     
-    business_name =  request.args.get('name')
+    stock_name =  request.args.get('name')
     
-    result = get_local_business_data(business_name)
+    # local = get_local_business_data(business_name)
+    yahoo_finance = get_yahoo_data(stock_name)
   
-    return result
+    return yahoo_finance
 
     
     
