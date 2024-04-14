@@ -1,22 +1,17 @@
-from flask import Flask
+from flask import Flask,request
 from polygon import RESTClient
-import requests
+from requests_oauthlib import OAuth1Session
+
+
+from local_business import get_local_business_data
+
 
 app = Flask(__name__)
 
 client = RESTClient(api_key="sSdMfHNF6plcQt7FUUdkpo48gwcrnp6G")
-url = "https://local-business-data.p.rapidapi.com/search"
 
-querystring = {"query":"River City Science Academy","limit":"20","lat":"37.359428","lng":"-121.925337","zoom":"13","language":"en","region":"us"}
 
-headers = {
-	"X-RapidAPI-Key": "023207c256msh41bd9a165c606c8p1b9c09jsn29c80b6f2916",
-	"X-RapidAPI-Host": "local-business-data.p.rapidapi.com"
-}
 
-response = requests.get(url, headers=headers, params=querystring)
-
-print(response.json())
 
 @app.route("/")
 def hello_world():
@@ -24,6 +19,14 @@ def hello_world():
 
 
 
-@app.route("/business")
+@app.route("/business",methods=['GET', 'POST'])
 def find_business_info():
-    return 'Business Info'
+    
+    business_name =  request.args.get('name')
+    
+    result = get_local_business_data(business_name)
+  
+    return result
+
+    
+    
