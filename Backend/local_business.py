@@ -14,7 +14,7 @@ def get_local_business_data(business_name):
     }
 
     location_data = requests.get(url, headers=headers, params=querystring)
-    result = {f'{business_name} Data':location_data.json(),
+    result = {f'{business_name} Data':location_data.json()['data'][0],
             f'{business_name} Stock Data':'Get from yahoo finance api'}
     
     return result
