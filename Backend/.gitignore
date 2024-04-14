@@ -1,0 +1,14 @@
+# Ignore .pyc files
+*.pyc
+
+# Ignore the virtual environment directory
+venv/
+
+# Ignore the instance directory
+instance/
+
+# Ignore any .DS_Store files created by macOS
+.DS_Store
+
+# Ignore any log files
+*.log
