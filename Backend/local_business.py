@@ -36,7 +36,7 @@ def get_yahoo_data(stock_name):
    
 #    result = {"general_info": info}
    
-   return business_data.income_stmt
+   return info
 
    
    
